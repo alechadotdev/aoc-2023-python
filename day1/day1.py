@@ -1,5 +1,4 @@
 from typing import List
-import copy
 
 MAPPING = {
     "one": "1",
@@ -49,8 +48,8 @@ def main():
     input_data = None
     with open("day1/input.txt", "r", encoding="utf-8") as input_file:
         input_data = input_file.read()
-    print(part1(copy.deepcopy(input_data)))
-    print(part2(copy.deepcopy(input_data)))
+    print(part1(input_data))
+    print(part2(input_data))
 
 
 if __name__ == "__main__":
