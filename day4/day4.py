@@ -2,9 +2,10 @@ def part1(data: str) -> int:
     result = 0
     for line in data.split("\n"):
         _, card_data = line.split(":")
-        winning_numbers, your_numbers = card_data.split("|")
-        winning_numbers = [int(number) for number in winning_numbers.strip().split()]
-        your_numbers = [int(number) for number in your_numbers.strip().split()]
+        winning_numbers, your_numbers = [
+            [int(number) for number in numbers.strip().split()]
+            for numbers in card_data.split("|")
+        ]
         exp = len([number for number in your_numbers if number in winning_numbers]) - 1
         partial = 0
         if exp >= 0:
@@ -15,12 +16,13 @@ def part1(data: str) -> int:
 
 def part2(data: str) -> int:
     max_index = len(data.split("\n"))
-    cards = [1 for it in range(max_index)]
+    cards = [1 for _ in range(max_index)]
     for it, line in enumerate(data.split("\n")):
         _, card_data = line.split(":")
-        winning_numbers, your_numbers = card_data.split("|")
-        winning_numbers = [int(number) for number in winning_numbers.strip().split()]
-        your_numbers = [int(number) for number in your_numbers.strip().split()]
+        winning_numbers, your_numbers = [
+            [int(number) for number in numbers.strip().split()]
+            for numbers in card_data.split("|")
+        ]
         for _ in range(cards[it]):
             for jt in range(
                 len([number for number in winning_numbers if number in your_numbers])
