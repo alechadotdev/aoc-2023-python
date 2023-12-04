@@ -23,13 +23,12 @@ def part2(data: str) -> int:
             [int(number) for number in numbers.strip().split()]
             for numbers in card_data.split("|")
         ]
-        for _ in range(cards[it]):
-            for jt in range(
-                len([number for number in winning_numbers if number in your_numbers])
-            ):
-                index = it + jt + 1
-                if index < max_index:
-                    cards[index] += 1
+        for jt in range(
+            len([number for number in winning_numbers if number in your_numbers])
+        ):
+            index = it + jt + 1
+            if index < max_index:
+                cards[index] += 1 * cards[it]
     return sum(cards)
 
 
