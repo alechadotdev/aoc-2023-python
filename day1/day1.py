@@ -1,5 +1,3 @@
-from typing import List
-
 MAPPING = {
     "one": "1",
     "two": "2",
@@ -12,6 +10,7 @@ MAPPING = {
     "nine": "9",
 }
 
+
 def part1(data: str) -> int:
     return sum(
         [
@@ -22,26 +21,33 @@ def part1(data: str) -> int:
         ]
     )
 
+
 def find_first_digit(line: str) -> int:
-    for it, char in enumerate(line): 
+    for it, char in enumerate(line):
         if char.isdigit():
             return char
-        for key in MAPPING:
+        for key, value in MAPPING.items():
             if line[it:].startswith(key):
-                return MAPPING[key]
+                return value
+
 
 def find_last_digit(line: str) -> int:
     line = line[::-1]
     for it, char in enumerate(line):
         if char.isdigit():
             return char
-        for key in MAPPING:
+        for key, value in MAPPING.items():
             if line[it:].startswith(key[::-1]):
-                return MAPPING[key]
+                return value
+
 
 def part2(data: str) -> int:
-    return sum([int(f"{find_first_digit(line)}{find_last_digit(line)}") for line in data.split("\n")])
-        
+    return sum(
+        [
+            int(f"{find_first_digit(line)}{find_last_digit(line)}")
+            for line in data.split("\n")
+        ]
+    )
 
 
 def main():

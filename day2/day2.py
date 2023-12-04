@@ -1,4 +1,6 @@
 CHECK = {"red": 12, "green": 13, "blue": 14}
+
+
 def part1(data: str) -> int:
     result = 0
     for game in data.split("\n"):
@@ -15,6 +17,7 @@ def part1(data: str) -> int:
             result += int(game_id)
     return result
 
+
 def part2(data: str) -> int:
     result = 0
     for game in data.split("\n"):
@@ -26,8 +29,9 @@ def part2(data: str) -> int:
                 value, cube_color = attempt_data.strip().split(" ")
                 if int(value) > attempt_max[cube_color]:
                     attempt_max[cube_color] = int(value)
-        result += attempt_max["red"]*attempt_max["green"]*attempt_max["blue"]
+        result += attempt_max["red"] * attempt_max["green"] * attempt_max["blue"]
     return result
+
 
 def main():
     data = None
